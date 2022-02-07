@@ -13,6 +13,7 @@
     </div>
   </div>
 </template>
+// On click each type to filter display by piece type
 
 <script>
 export default {

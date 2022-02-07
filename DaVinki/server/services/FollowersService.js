@@ -1,8 +1,12 @@
 import { BadRequest } from '@bcwdev/auth0provider/lib/Errors'
 import { dbContext } from '../db/DbContext'
 class FollowersService {
+    async getFollowingByAccountId(userId) {
+        const following = await dbContext.Followers.find({ followingId: userId }).populate('account', 'name picture')
+        return following
+    }
     async getFollowersByAccountId(accountId) {
-        const followers = await dbContext.Followers.find({ accountId: accountId }).populate('account', 'name picture')
+        const followers = await dbContext.Followers.find({ accountId: accountId }).populate('follower', 'name picture')
         return followers
     }
 
@@ -12,14 +16,15 @@ class FollowersService {
         return addFollower
     }
 
-    async removeFollower(followerId) {
-        const foundFollower = await dbContext.Followers.findById(followerId)
-        if (foundFollower.followerId.toString() !== followerId) {
+    async removeFollower(modelId, userId) {
+        const foundFollower = await dbContext.Followers.findById(modelId)
+        if (foundFollower.followerId.toString() !== userId) {
             throw new BadRequest('unable to delete')
         }
         await foundFollower.remove()
         return foundFollower
     }
+
 }
 
 

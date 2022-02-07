@@ -2,15 +2,25 @@ import { BadRequest } from "@bcwdev/auth0provider/lib/Errors"
 import { dbContext } from "../db/DbContext"
 
 class CommissionsService {
-    async getByAccount(artistId, buyerId) {
-        const commissions = await dbContext.Commissions.find({ id: artistId, accountId: buyerId }).populate('account', 'name')
+    async getByAccount(userId) {
+        // REVIEW Do we want more information on the populate?
+        const commissions = await dbContext.Commissions.find({ $or: [{ buyerId: userId }, { artistId: userId }] })
+            .populate('artist', 'name picture')
+            .populate('buyer', 'name picture')
         //Would the other Line go here
         return commissions
     }
 
-    async getById(id) {
-        const commissions = await dbContext.Commissions.find({ _id: id }).populate('account', 'name picture')
-        return commissions
+    async getById(id, userId) {
+        // REVIEW does this work? 
+        const commission = await dbContext.Commissions.findOne({ _id: id, $or: [{ buyerId: userId }, { artistId: userId }] })
+            .populate('artist', 'name picture')
+            .populate('buyer', 'name picture')
+        if (!commission) {
+            throw new BadRequest('Invalid ID')
+        }
+
+        return commission
     }
 
     async createCommission(newCommission) {
@@ -20,25 +30,32 @@ class CommissionsService {
         return createdCommission
     }
 
-    async editCommission(updated,) {
-        const original = await dbContext.Commissions.findById(updated.id)
+    async editCommission(updated, userId) {
+        const original = await this.getById(updated.id, userId)
+
         if (original.status.toString() !== 'denied') {
             throw new BadRequest('Cannot Edit Denied Request')
         }
-        original.type = updated.type || original.type
-        original.description = updated.description || original.description
-        original.deposit = updated.deposit || original.deposit
-        original.depositReceived = updated.depositReceived || original.depositReceived
-        original.totalPrice = updated.totalPrice || original.totalPrice
-        original.status = updated.status || original.status
+        if (original.artistId.toString() == userId) {
+
+            original.totalPrice = updated.totalPrice || original.totalPrice
+            original.status = updated.status || original.status
+            original.deposit = updated.deposit || original.deposit
+        } else {
+            original.status = updated.status || original.status
+            original.type = updated.type || original.type
+            original.description = updated.description || original.description
+        }
+
         await original.save()
         return original
     }
 
-    async removeCommission(id) {
-        const foundCommission = await dbContext.Commissions.findById(id)
-        await foundCommission.remove()
-        await foundCommission
+    async removeCommission(id, userId) {
+        const foundCommission = await this.getById(id, userId)
+        foundCommission.status = 'canceled'
+        await foundCommission.save()
+        return foundCommission
     }
 
 }

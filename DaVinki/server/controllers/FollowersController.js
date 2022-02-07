@@ -23,10 +23,12 @@ export class FollowersController extends BaseController {
     }
     async remove(req, res, next) {
         try {
-            const deleteFollower = await followersService.removeFollower(req.params.id)
+            const deleteFollower = await followersService.removeFollower(req.params.id, req.userInfo.id)
             res.send(deleteFollower)
         } catch (error) {
             next(error)
         }
     }
+
+
 }

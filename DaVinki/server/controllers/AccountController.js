@@ -9,7 +9,8 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
-      .get('/followers/:id', this.getByAccount)
+      .get('/followers', this.getByAccount)
+      .get('/following', this.getFollowing)
   }
 
   async getByAccount(req, res, next) {
@@ -17,7 +18,15 @@ export class AccountController extends BaseController {
       const followers = await followersService.getFollowersByAccountId(req.userInfo.id)
       return res.send(followers)
     } catch (error) {
-
+      next(error)
+    }
+  }
+  async getFollowing(req, res, next) {
+    try {
+      const followers = await followersService.getFollowingByAccountId(req.userInfo.id)
+      return res.send(followers)
+    } catch (error) {
+      next(error)
     }
   }
 

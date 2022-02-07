@@ -10,7 +10,7 @@ export const CommissionSchema = new Schema({
     deposit: { type: Number },
     depositReceived: { type: Boolean, default: false },
     totalPrice: { type: Number },
-    status: { type: String, enum: ['pending', 'accepted', 'inProgress', 'completed', 'denied'], required: true, default: 'pending' },
+    status: { type: String, enum: ['pending', 'accepted', 'inProgress', 'completed', 'denied', 'canceled'], required: true, default: 'pending' },
 
 
 },

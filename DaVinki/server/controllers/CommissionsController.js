@@ -7,9 +7,9 @@ export class CommissionsController extends BaseController {
     constructor() {
         super('api/account/commissions')
         this.router
+            .use(Auth0Provider.getAuthorizedUserInfo)
             .get('', this.getByAccount)
             .get('/:id', this.getById)
-            .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createCommission)
             .put('/:id', this.editCommission)
             .delete('/:id', this.removeCommission)
@@ -17,8 +17,7 @@ export class CommissionsController extends BaseController {
 
     async getByAccount(req, res, next) {
         try {
-            req.body.accountId = req.userInfo.id
-            const commissions = await commissionsService.getByAccount()
+            const commissions = await commissionsService.getByAccount(req.userInfo.id)
             return res.send(commissions)
         } catch (error) {
             next(error)
@@ -26,8 +25,8 @@ export class CommissionsController extends BaseController {
     }
     async getById(req, res, next) {
         try {
-            const commissions = await commissionsService.getById(req.params.id)
-            return res.send(commissions)
+            const commission = await commissionsService.getById(req.params.id, req.userInfo.id)
+            return res.send(commission)
         } catch (error) {
             next(error)
         }
@@ -35,8 +34,8 @@ export class CommissionsController extends BaseController {
 
     async createCommission(req, res, next) {
         try {
-            req.body.accountId = req.userInfo.id
-            const commissions = await commissionsService.createCommission(req.body.id)
+            req.body.buyerId = req.userInfo.id
+            const commissions = await commissionsService.createCommission(req.body)
             return res.send(commissions)
         } catch (error) {
             next(error)
@@ -46,7 +45,7 @@ export class CommissionsController extends BaseController {
     async editCommission(req, res, next) {
         try {
             req.body.id = req.params.id
-            const editedCommission = await commissionsService.editCommission(req.body.id)
+            const editedCommission = await commissionsService.editCommission(req.body.id, req.userInfo.id)
             return res.send(editedCommission)
         } catch (error) {
             next(error)
@@ -55,9 +54,8 @@ export class CommissionsController extends BaseController {
     }
     async removeCommission(req, res, next) {
         try {
-            req.body.id = req.params.id
-            req.body.accountId = req.userInfo.id
-            await commissionsService.removeCommission(req.params.id)
+
+            await commissionsService.removeCommission(req.params.id, req.userInfo.id)
             return res.send('deleted commission')
         } catch (error) {
             next(error)

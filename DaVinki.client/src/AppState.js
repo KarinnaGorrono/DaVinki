@@ -7,5 +7,7 @@ export const AppState = reactive({
   pieces: [],
   activePiece: {},
   followers: [],
-  activeFollower: {}
+  activeFollower: {},
+  commissions: [],
+  activeCommission: {}
 })

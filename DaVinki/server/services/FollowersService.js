@@ -8,13 +8,13 @@ class FollowersService {
 
     async addFollower(newFollower) {
         const addFollower = await dbContext.Followers.create(newFollower)
-        await addFollower.populate('buyer', 'name picture')
+        await addFollower.populate('follower', 'name picture')
         return addFollower
     }
 
-    async removeFollower(accountId, followerId) {
-        const foundFollower = await dbContext.Followers.findById(accountId)
-        if (foundFollower.accountId.toString() !== followerId) {
+    async removeFollower(followerId) {
+        const foundFollower = await dbContext.Followers.findById(followerId)
+        if (foundFollower.followerId.toString() !== followerId) {
             throw new BadRequest('unable to delete')
         }
         await foundFollower.remove()

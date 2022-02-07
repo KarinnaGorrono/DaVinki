@@ -4,25 +4,29 @@ import BaseController from "../utils/BaseController";
 
 export class FollowersController extends BaseController {
     constructor() {
-        super('api/account/commissions')
+        super('api/account/followers')
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
-            .get('/:id', this.getByAccount)
-            .get('', this.getFollower)
+            .post('', this.addFollower)
             .delete('/:id', this.remove)
     }
-    async getByAccount(arg0, getByAccount) {
-        try {
-            const followers = await followersService.getFollowersByAccountId
-        } catch (error) {
 
+    async addFollower(req, res, next) {
+
+        try {
+            req.body.accountId = req.userInfo.id
+            const addFollower = await followersService.addFollower(req.body)
+            return res.send(addFollower)
+        } catch (error) {
+            next(error)
         }
-        throw new Error("Method not implemented.");
     }
-    getFollower(arg0, getFollower) {
-        throw new Error("Method not implemented.");
-    }
-    remove(arg0, remove) {
-        throw new Error("Method not implemented.");
+    async remove(req, res, next) {
+        try {
+            const deleteFollower = await followersService.removeFollower(req.params.id)
+            res.send(deleteFollower)
+        } catch (error) {
+            next(error)
+        }
     }
 }

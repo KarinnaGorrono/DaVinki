@@ -8,7 +8,7 @@ export const AccountSchema = new Schema(
     name: { type: String, required: true },
     picture: { type: String },
     biography: { type: String },
-    location: { type: String, required: true },
+    location: { type: String },
     facebook: { type: String },
     instagram: { type: String },
     quote: { type: String },

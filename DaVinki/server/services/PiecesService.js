@@ -2,7 +2,7 @@ import { BadRequest } from "@bcwdev/auth0provider/lib/Errors"
 import { dbContext } from "../db/DbContext"
 
 class PiecesService {
-    async GetAll() {
+    async getAll() {
         const pieces = await dbContext.Pieces.find().populate('artist', 'name picture')
         return pieces
     }
@@ -23,7 +23,7 @@ class PiecesService {
 
     async edit(updated, artistId) {
         const original = await this.getById(updated.id)
-        if (original.artistId.toString() !== artistId) {
+        if (original.creatorId.toString() !== artistId) {
             throw new BadRequest('unauthorized')
         }
         original.name = updated.name || original.name
@@ -38,7 +38,7 @@ class PiecesService {
 
     async remove(id, artistId) {
         const original = await this.getById(id)
-        if (original.artistId.toString() !== artistId) {
+        if (original.creatorId.toString() !== artistId) {
             throw new BadRequest('unauthorized')
         }
         await dbContext.Pieces.findOneAndRemove({ _id: id, creatorId: artistId },)

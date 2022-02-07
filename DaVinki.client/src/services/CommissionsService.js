@@ -3,8 +3,8 @@ import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 class CommissionsService {
-    async getCommission(accountId) {
-        const active = AppState.commissions.find(c => c.id === accountId)
+    async getCommission(artistId) {
+        const active = AppState.commissions.find(c => c.id === artistId)
         logger.log('active', active)
         AppState.activeCommission = active
     }

@@ -3,8 +3,8 @@ import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 class FollowersService {
-    async getByAccount(accountId) {
-        const active = AppState.followers.find(f => f.id === accountId)
+    async getByAccount(artistId) {
+        const active = AppState.followers.find(f => f.id === artistId)
         logger.log('active', active)
         AppState.activeFollower = active
     }

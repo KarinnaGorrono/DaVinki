@@ -4,8 +4,8 @@ import { api } from "./AxiosService"
 
 
 class PiecesService {
-    async getAllPieces() {
-        const res = await api.get('api/pieces')
+    async getAllPieces(query = '') {
+        const res = await api.get('api/pieces' + query)
         logger.log(res.data)
         AppState.pieces = res.data
     }

@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class=""> -->
   <div
     class="card border-white"
     :data-bs-target="'#piece-' + piece.id"
@@ -16,7 +15,6 @@
       <h4 class="piece-title">Piece Title</h4>
       <h6 class="piece-artist">Artist Name</h6>
     </div>
-    <!-- </div> -->
   </div>
   <Modal :id="'#piece-' + piece.id">
     <template #modal-title>

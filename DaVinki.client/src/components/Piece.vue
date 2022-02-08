@@ -9,11 +9,11 @@
       }em; object-fit:cover;`"
     />
     <div class="piece-body pb-4 text-uppercase pt-1">
-      <h4 class="piece-title">{{ piece.title }}</h4>
-      <h6 class="piece-artist"></h6>
+      <h4 class="piece-title">{{ piece.name }}</h4>
+      <h6 class="piece-artist">{{ piece.creatorId }}</h6>
     </div>
-    <!-- </div> -->
   </div>
+  <!-- </div> -->
   <!-- <Modal :id="'#piece-' + piece.id">
     <template #modal-title>
       <h4>{{ piece.title }}</h4>
@@ -28,7 +28,7 @@
         <div class="col-md-9 d-flex justify-content-center pt-3">
           <img
             class="rounded img-fluid details-img"
-            :src="piece.imgUrl"
+            :src="piece.coverImg"
             alt=""
           />
         </div>

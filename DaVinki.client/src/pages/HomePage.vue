@@ -5,8 +5,12 @@
       <SecondaryNavbar />
     </header>
     <main class="row">
-      <div class="masonry-with-columns py-2">
-        <Piece v-for="p in pieces" :key="p.id" :piece="p" />
+      <div
+        class="masonry-with-columns py-2"
+        v-for="p in filteredPieces"
+        :key="p.id"
+      >
+        <Piece :piece="p" />
       </div>
     </main>
   </div>
@@ -65,6 +69,7 @@ export default {
       }
     })
     return {
+      filteredPieces: computed(() => AppState.filteredPieces),
       pieces: computed(() => AppState.pieces),
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),

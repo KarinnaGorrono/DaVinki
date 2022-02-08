@@ -46,7 +46,6 @@ export default {
         logger.log(error)
       }
     })
-    onMounted(() => piecesService.getAllPieces())
     return {
       pieces: computed(() => AppState.filteredPieces),
       user: computed(() => AppState.user),

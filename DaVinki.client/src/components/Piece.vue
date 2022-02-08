@@ -14,7 +14,7 @@
     </div>
     <!-- </div> -->
   </div>
-  <!-- <Modal :id="'#piece-' + piece.id">
+  <Modal :id="'#piece-' + piece.id">
     <template #modal-title>
       <h4>{{ piece.title }}</h4>
     </template>
@@ -39,7 +39,7 @@
         </p>
       </div>
     </template>
-  </Modal> -->
+  </Modal>
 </template>
 
 <script>

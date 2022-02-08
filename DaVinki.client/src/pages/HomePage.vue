@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-white">
+  <div class="row bg-white" v-if="account.id">
     <header>
       <Navbar />
       <SecondaryNavbar />
@@ -10,7 +10,7 @@
       </div>
     </main>
   </div>
-  <div v-if="account.id" class="row background-row">
+  <div v-else class="row background-row">
     <div class="ms-5 ps-4">
       <h1 class="davinkiFont">DaVinki</h1>
     </div>

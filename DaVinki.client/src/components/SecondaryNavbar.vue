@@ -30,6 +30,7 @@
 // On click each type to filter display by piece type
 
 <script>
+import { computed, onMounted } from "@vue/runtime-core";
 import { AppState } from "../AppState";
 import { piecesService } from "../services/PiecesService";
 import { logger } from "../utils/Logger";

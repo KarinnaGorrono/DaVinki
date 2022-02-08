@@ -6,7 +6,7 @@
     </header>
     <main class="row">
       <div class="masonry-with-columns py-2">
-        <Piece v-for="n in 15" :key="n" />
+        <Piece v-for="p in pieces" :key="p.id" :piece="p" />
       </div>
     </main>
   </div>
@@ -25,6 +25,15 @@
         -"Leonardo da Vinci"
       </h3>
     </div>
+    <div class="quoteFont text-center">
+      <h1
+        class="selectable text-uppercase"
+        @click="login()"
+        v-if="!user.isAuthenticated"
+      >
+        Login
+      </h1>
+    </div>
   </div>
 
   <Modal id="piece-details">
@@ -37,15 +46,31 @@
 // Separate pages for the piece types or just filters?
 
 <script>
-import { computed } from '@vue/reactivity';
+import { computed, onMounted, ref } from '@vue/runtime-core';
 import { AppState } from '../AppState';
+import { logger } from '../utils/Logger'
+import { piecesService } from '../services/PiecesService'
+import Pop from '../utils/Pop'
+import { AuthService } from '../services/AuthService'
 export default {
   setup() {
+    const loading = ref(true)
+    onMounted(async () => {
+      try {
+        await piecesService.getAllPieces()
+        loading.value = false
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'Error')
+      }
+    })
     return {
+      pieces: computed(() => AppState.pieces),
       account: computed(() => AppState.account),
-
-
-
+      user: computed(() => AppState.user),
+      async login() {
+        AuthService.loginWithRedirect()
+      },
     };
   }
 }

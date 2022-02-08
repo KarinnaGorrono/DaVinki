@@ -2,15 +2,15 @@
   <!-- <div class=""> -->
   <div class="card border-white">
     <img
-      src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+      :src="piece.coverImg"
       class="card-img-top img-fluid selectable elevation-3"
       :style="`height: ${
         Math.round(Math.random() * 30) + 20
       }em; object-fit:cover;`"
     />
     <div class="piece-body pb-4 text-uppercase pt-1">
-      <h4 class="piece-title">Piece Title</h4>
-      <h6 class="piece-artist">Artist Name</h6>
+      <h4 class="piece-title">{{ piece.title }}</h4>
+      <h6 class="piece-artist"></h6>
     </div>
     <!-- </div> -->
   </div>
@@ -44,7 +44,9 @@
 
 <script>
 export default {
-
+  props: {
+    piece: { type: Object, required: true }
+  }
 }
 </script>
 

@@ -26,6 +26,7 @@ class PiecesService {
         if (original.creatorId.toString() !== artistId) {
             throw new BadRequest('unauthorized')
         }
+        original.coverImg = updated.coverImg || original.coverImg
         original.name = updated.name || original.name
         original.type = updated.type || original.type
         original.tags = updated.tags || original.tags

@@ -1,8 +1,8 @@
 <template>
-      <header >
+      <header class="row" >
       <Navbar />
       <SecondaryNavbar />
-     </header>
+    </header>
       <main class="row">
         <div class="col-12 my-3 d-flex justify-content-center">
 
@@ -76,4 +76,5 @@ account: {type: Object, required: true}
 img {
  height: 300px;
 }
+
 </style>

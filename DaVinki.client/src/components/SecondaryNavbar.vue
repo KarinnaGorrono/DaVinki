@@ -50,7 +50,7 @@ export default {
       pieces: computed(() => AppState.filteredPieces),
       user: computed(() => AppState.user),
 
-      filteredPieces(type) {
+      filterPieces(type) {
         let filteredPieces = AppState.pieces.filter(p => p.type == type)
         logger.log
           (filteredPieces)

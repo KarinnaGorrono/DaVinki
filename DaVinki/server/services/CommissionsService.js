@@ -7,7 +7,7 @@ class CommissionsService {
         const commissions = await dbContext.Commissions.find({ $or: [{ buyerId: userId }, { artistId: userId }] })
             .populate('artist', 'name picture')
             .populate('buyer', 'name picture')
-        //Would the other Line go here
+
         return commissions
     }
 

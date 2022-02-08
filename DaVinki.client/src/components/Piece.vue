@@ -16,33 +16,6 @@
       <h6 class="piece-artist">{{ piece.creatorId }}</h6>
     </div>
   </div>
-  <!-- </div> -->
-  <!-- <Modal :id="'#piece-' + piece.id">
-    <template #modal-title>
-      <h4>{{ piece.title }}</h4>
-    </template>
-    <template #modal-body>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="pt-5">
-            <p>{{ piece.artist }}</p>
-          </div>
-        </div>
-        <div class="col-md-9 d-flex justify-content-center pt-3">
-          <img
-            class="rounded img-fluid details-img"
-            :src="piece.coverImg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="row pt-5">
-        <p class="">
-          {{ piece.description }}
-        </p>
-      </div>
-    </template>
-  </Modal>
 </template>
 
 <script>
@@ -53,6 +26,6 @@ export default {
 }
 </script>
 
+
 <style>
 </style>
-

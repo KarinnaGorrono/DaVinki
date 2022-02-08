@@ -13,12 +13,12 @@
     />
     <div class="piece-body pb-4 text-uppercase pt-1">
       <h4 class="piece-title">{{ piece.name }}</h4>
-      <h6 class="piece-artist">{{ piece.creatorId }}</h6>
+      <h6 class="piece-artist">{{ piece.creator }}</h6>
     </div>
   </div>
-  <Modal :id="'#piece-' + piece.id">
+  <Modal :id="'piece-' + piece.id">
     <template #modal-title>
-      <h4>{{ piece.title }}</h4>
+      <h4>{{ piece.name }}</h4>
     </template>
     <template #modal-body>
       <div class="row">

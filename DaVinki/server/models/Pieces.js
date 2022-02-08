@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 export const PiecesSchema = new Schema({
     creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' },
     name: { type: String, required: true },
+    coverImg: { type: String, required: true },
     type: { type: String, enum: ['Drawings/Paintings', 'threeDimensional', 'Photography'], required: true },
     tags: [{ type: String }],
     createdDate: { type: String, required: true },

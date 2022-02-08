@@ -17,7 +17,7 @@ export const PiecesSchema = new Schema({
     { timestamps: true, toJSON: { virtuals: true } })
 
 PiecesSchema.virtual('artist', {
-    localField: 'artistId',
+    localField: 'creatorId',
     foreignField: '_id',
     justOne: true,
     ref: 'Account'

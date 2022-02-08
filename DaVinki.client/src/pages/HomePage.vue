@@ -1,10 +1,10 @@
 <template>
-  <div class="row bg-white" v-if="account.id">
+  <div class="row bg-white" v-if="user.isAuthenticated">
     <header>
       <Navbar />
       <SecondaryNavbar />
     </header>
-    <main class="row">
+    <main>
       <div
         class="masonry-with-columns py-2"
         v-for="p in filteredPieces"
@@ -47,7 +47,7 @@
     </template>
   </Modal>
 </template>
-// Separate pages for the piece types or just filters?
+
 
 <script>
 import { computed, onMounted, ref } from '@vue/runtime-core';

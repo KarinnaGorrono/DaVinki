@@ -1,21 +1,18 @@
 <template>
   <div
-    class="card border-white"
+    class="bg-white rounded elevation-1 border-white"
     :data-bs-target="'#piece-' + piece.id"
     data-bs-toggle="modal"
   >
     <img
       :src="piece.coverImg"
-      class="card-img-top img-fluid selectable elevation-3"
-      :style="`height: ${
-        Math.round(Math.random() * 30) + 20
-      }em; object-fit:cover;`"
+      class=" w-100 selectable elevation-3"
+    
     />
     <div class="piece-body pb-4 text-uppercase pt-1">
       <h4 class="piece-title">{{ piece.name }}</h4>
-      <h6 class="piece-artist">{{ piece.creator }}</h6>
+      <h6 class="piece-artist">{{ piece.artist.name }}</h6>
     </div>
-  </div>
   <Modal :id="'piece-' + piece.id">
     <template #modal-title>
       <h4>{{ piece.name }}</h4>
@@ -42,6 +39,7 @@
       </div>
     </template>
   </Modal>
+  </div>
 </template>
 
 <script>

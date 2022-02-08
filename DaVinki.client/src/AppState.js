@@ -9,5 +9,6 @@ export const AppState = reactive({
   followers: [],
   activeFollower: {},
   commissions: [],
-  activeCommission: {}
+  activeCommission: {},
+  filteredPieces: []
 })

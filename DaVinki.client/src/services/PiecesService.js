@@ -8,6 +8,7 @@ class PiecesService {
         const res = await api.get('api/pieces' + query)
         logger.log(res.data)
         AppState.pieces = res.data
+        AppState.filteredPieces = res.data
     }
 
     async getPieceById(pieceId) {

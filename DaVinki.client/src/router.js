@@ -20,8 +20,22 @@ const routes = [
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
-    beforeEnter: authGuard
-  }
+    beforeEnter: authGuard,
+    children: [
+      {
+        path: 'commissions',
+        name: 'Commissions',
+        component: loadPage('AccountCommissionsPage')
+      },
+      {
+        path: 'incoming',
+        name: 'Incoming',
+        component: loadPage('AccountIncomingPage')
+      }
+    ]
+
+  },
+
 ]
 
 export const router = createRouter({

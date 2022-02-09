@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-12 d-flex justify-content-around">
+    <div class="col-md-12 d-flex">
       <table class="">
         <tr>
           <th>Piece</th>

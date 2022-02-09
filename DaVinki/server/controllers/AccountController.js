@@ -11,6 +11,15 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/followers', this.getByAccount)
       .get('/following', this.getFollowing)
+      .put('', this.updateAccount)
+  }
+  async updateAccount(req, res, next) {
+    try {
+      const account = await accountService.updateAccount(req.userInfo, req.body)
+      res.send(account)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getByAccount(req, res, next) {

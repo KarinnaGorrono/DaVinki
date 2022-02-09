@@ -47,7 +47,8 @@
           name="isArtist"
           id="isArtist"
           class="form-control"
-        >
+           >
+      
           <option disabled selected value="">Artist</option>
           <option>true</option>
           <option>false</option>
@@ -97,7 +98,8 @@
         />
       </div>
       <div class="col-12 d-flex justify-content-end">
-        <button class="btn btn-success">Submit</button>
+        <button
+        class="btn btn-success">Save</button>
       </div>
     </div>
   </form>
@@ -109,6 +111,7 @@ import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { useRoute } from "vue-router";
 import { accountService } from '../services/AccountService';
+import { AppState } from '../AppState';
 export default {
   setup() {
     const route = useRoute();
@@ -125,6 +128,7 @@ export default {
           logger.log(error);
         }
       },
+     
     };
   },
 };

@@ -21,7 +21,7 @@ class PiecesService {
         AppState.activePiece = active
     }
 
-    async createPiece() {
+    async createPiece(body) {
         const res = await api.post('api/pieces', body)
         logger.log(res.data)
         AppState.pieces.unshift(res.body)

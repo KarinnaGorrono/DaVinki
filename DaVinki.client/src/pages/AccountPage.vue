@@ -4,29 +4,58 @@
     <SecondaryNavbar />
   </header>
   <main class="row">
-    <div class="col-12 my-3 d-flex justify-content-center">
+    <div class="col-md-12 my-3 d-flex justify-content-center">
       <h1>{{ account.name }}</h1>
-    </div>
-    <div class="row">
-      <div class="col-6">
+     </div>
+     <div class="row">
+      <div class="col-md-6">
         <div class="row">
-          <div class="col-12 d-flex justify-content-around">
+          <div class="col-md-12 d-flex justify-content-around">
             <h2 class="text-center">Incoming Commissions</h2>
             <h2 class="text-center">My Commissions</h2>
           </div>
         </div>
-        <div class="row">
+        <div>
           <router-view />
         </div>
       </div>
-      <div class="col-6">
+      
+      <div class="col-md-6">
+        <div class="row">
+<div class="col-md-6">
         <div class="my-2 d-flex">
           <img :src="account.picture" alt="" />
         </div>
-        <div>
-          <p>{{ account.biography }}</p>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="col-md-6 ">
+          <div class="py-4">
+
+          <h5>Address:</h5>
+          </div>
+        <div class="py-4"> 
+          <h5>Facebook:</h5>
+        </div>
+        <div class="py-4">
+          <h5>Instagram:</h5>
+        </div>
+        <div class="py-4">
+          <h5>Accepting Commissions</h5>
+        </div>
+        </div>
+</div>
+        <div class="row">
+        <div class="py-4">
+          <p>{{ account.biography }}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quidem, ratione illum in incidunt earum voluptates excepturi dicta rem perferendis ducimus enim molestias, consectetur voluptas soluta molestiae velit iure quis!
+          </p>
+        </div>
+        <div class="py-3">
+             "I am extraordinarily patient, provided I get my own way in the end."
+               -Margaret Thatcher
+        </div>
+        
+        </div>
+        <div class="d-flex justify-content-end py-5">
           <button
             class="btn btn-outline-success"
             type="button"

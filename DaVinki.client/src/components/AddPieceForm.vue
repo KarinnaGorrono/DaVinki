@@ -67,6 +67,7 @@ export default {
     const editable = ref({})
 
     return {
+      editable,
       async postPiece() {
         const form = event.target
         const imgInput = form.inputImgSrc

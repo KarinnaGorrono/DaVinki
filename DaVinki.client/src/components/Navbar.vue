@@ -73,7 +73,7 @@
             class="dropdown-menu p-0 list-group w-100"
             aria-labelledby="authDropdown"
           >
-            <router-link :to="{ name: 'Account' }">
+            <router-link :to="{ name: 'Commissions' }">
               <div class="list-group-item list-group-item-action hoverable">
                 Manage Account
               </div>
@@ -99,7 +99,7 @@
 <script>
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import Pop from "../utils/Pop"
 import { logger } from "../utils/Logger"
 import { piecesService } from "../services/PiecesService"

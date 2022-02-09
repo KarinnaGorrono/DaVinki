@@ -12,9 +12,10 @@ class AccountService {
     }
   }
 
-  async edit(data) {
-    const res = await api.put('/account', data)
+  async edit(updatedProfile) {
+    const res = await api.put('/account', updatedProfile)
     AppState.account = res.data
+    logger.log(res.data)
     AppState.activeProfile = res.data
   }
 }

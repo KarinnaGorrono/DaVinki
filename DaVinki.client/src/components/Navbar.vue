@@ -14,7 +14,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon" />
+      <span class="navbar-toggler-icon text-black" />
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarText">
       <!-- <ul class="navbar-nav me-auto">

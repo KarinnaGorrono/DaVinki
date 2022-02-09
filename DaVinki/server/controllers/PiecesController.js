@@ -34,7 +34,7 @@ export class PiecesController extends BaseController {
 
     async createPiece(req, res, next) {
         try {
-            req.body.accountId = req.userInfo.id
+            req.body.creatorId = req.userInfo.id
             const createdPiece = await piecesService.create(req.body)
             return res.send(createdPiece)
         } catch (error) {

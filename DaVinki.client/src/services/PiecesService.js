@@ -24,7 +24,7 @@ class PiecesService {
     async createPiece(body) {
         const res = await api.post('api/pieces', body)
         logger.log(res.data)
-        AppState.pieces.unshift(res.body)
+        AppState.pieces.unshift(res.data)
         return res.data
     }
 

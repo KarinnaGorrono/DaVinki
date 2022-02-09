@@ -16,14 +16,17 @@
         <div class="my-2 d-flex">
           <img :src="account.picture" alt="" />
         </div>
-        <div></div>
+        <div>
+          <p>{{ account.biography }}</p>
+        </div>
         <div class="d-flex justify-content-end">
           <router-view />
           <button
+            class="btn btn-outline-success"
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#addPiece"
-            aria-label="Toggle modal"
+            aria-label="Toggle Edit modal"
           >
             Add Piece
           </button>
@@ -36,7 +39,15 @@
             </template>
           </Modal>
 
-          <button>Edit Profile</button>
+          <button
+            class="btn btn-outline-success"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#editProfile"
+            aria-label="Toggle Edit modal"
+          >
+            Edit Profile
+          </button>
         </div>
       </div>
     </div>

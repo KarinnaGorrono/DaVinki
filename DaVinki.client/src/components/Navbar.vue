@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white px-3 ">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h1 class="text-black">DaVinki</h1>
@@ -28,12 +28,13 @@
         </li>
       </ul> -->
 
-      <form class="d-flex">
+      <form class="d-flex" @submit.prevent="searchPieces()">
         <input
           class="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          v-model="editable"
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -99,8 +100,12 @@
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
 import { computed } from 'vue'
+import Pop from "../utils/Pop"
+import { logger } from "../utils/Logger"
+import { piecesService } from "../services/PiecesService"
 export default {
   setup() {
+    const editable = ref("");
     return {
       user: computed(() => AppState.user),
       async login() {
@@ -108,7 +113,16 @@ export default {
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
-      }
+      },
+      async searchPieces() {
+        try {
+          await piecesService.searchPieces(editable.value);
+        } catch (error) {
+          Pop(error.message, "cannot search art")
+          logger.log(error.message)
+        }
+      },
+      editable
     }
   }
 }

@@ -1,8 +1,12 @@
+import axios from "axios"
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
+//NOTE need to know what API is needed
+const pieceApi = axios.create({
 
+})
 class PiecesService {
     async getAllPieces(query = '') {
         const res = await api.get('api/pieces' + query)
@@ -36,6 +40,13 @@ class PiecesService {
         const found = AppState.pieces.findIndex(p => p.id == id)
         AppState.pieces.splice(found, 1)
         logger.log(AppState.pieces)
+    }
+
+    async searchPieces(searchTerm) {
+        console.log('search term in service', searchTerm)
+        const res = await AppState.pieces(`?query=${searchTerm}`)
+        console.log('search art res', res);
+        AppState.searchResults = res.data.results.map(p => new Piece(p))
     }
 
 }

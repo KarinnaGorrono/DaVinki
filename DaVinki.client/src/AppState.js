@@ -10,5 +10,6 @@ export const AppState = reactive({
   activeFollower: {},
   commissions: [],
   activeCommission: {},
-  filteredPieces: []
+  filteredPieces: [],
+  searchResults: []
 })

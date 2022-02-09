@@ -65,6 +65,7 @@ export default {
       editable.value = { ...props.piece }
     })
     return {
+
       editable,
 
       async removePiece() {

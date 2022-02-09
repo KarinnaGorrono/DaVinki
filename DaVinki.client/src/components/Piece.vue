@@ -72,6 +72,7 @@ export default {
           if (await Pop.confirm()) {
             await piecesService.removePiece(props.piece.id)
           }
+          Pop.toast('Piece has been deleted')
         } catch (error) {
           Pop.toast(error.message, 'error')
           logger.log(error.message)

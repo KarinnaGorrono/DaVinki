@@ -69,6 +69,7 @@
 import { ref } from '@vue/reactivity';
 import { piecesService } from '../services/PiecesService';
 import { firebaseService } from '../services/FirebaseService';
+import Pop from "../utils/Pop";
 export default {
   setup() {
 
@@ -80,6 +81,7 @@ export default {
         const form = event.target
         const imgInput = form.inputImgSrc
         const file = imgInput.files[0]
+        Pop.toast("Piece has been created!")
         if (!file) { return }
         const url = await firebaseService.uploadFile(file, editable.value)
         editable.value.coverImg = url

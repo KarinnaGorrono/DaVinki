@@ -17,7 +17,8 @@
         <div class="row">
           <div class="col-md-3">
             <div class="pt-5">
-              <p>{{ piece.artist }}</p>
+              <p>{{ piece.artist.name }}</p>
+              <p>{{ piece.createdDate }}</p>
             </div>
           </div>
           <div class="col-md-9 d-flex justify-content-center pt-3">
@@ -33,19 +34,53 @@
             {{ piece.description }}
           </p>
         </div>
+        <button
+          @click.prevent="removePiece()"
+          type="button"
+          data-bs-dismiss="modal"
+          aria-label="delete"
+          class="btn btn-danger"
+        >
+          <b>Delete Piece</b>
+        </button>
       </template>
     </Modal>
   </div>
 </template>
 
 <script>
+import { ref, watchEffect } from "@vue/runtime-core"
+import Pop from "../utils/Pop"
+import { piecesService } from "../services/PiecesService"
+import { logger } from "../utils/Logger"
+import { useRoute } from "vue-router"
 export default {
   props: {
     piece: { type: Object, required: true }
+  },
+  setup(props) {
+    const route = useRoute()
+    const editable = ref({})
+    watchEffect(() => {
+      editable.value = { ...props.piece }
+    })
+    return {
+      editable,
+
+      async removePiece() {
+        try {
+          if (await Pop.confirm()) {
+            await piecesService.removePiece(props.piece.id)
+          }
+          Pop.toast('Piece has been deleted')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+          logger.log(error.message)
+        }
+      }
+    }
   }
 }
 </script>
 
 
-<style>
-</style>

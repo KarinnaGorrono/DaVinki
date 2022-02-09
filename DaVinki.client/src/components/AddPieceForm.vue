@@ -17,7 +17,13 @@
     </div>
     <div class="col-md-4">
       <label for="inputDate" class="form-label">Date of Creation:</label>
-      <input required type="date" class="form-control" id="inputDate" />
+      <input
+        required
+        type="date"
+        class="form-control"
+        id="inputDate"
+        v-model="editable.createdDate"
+      />
     </div>
     <div class="col-12">
       <label for="inputTags" class="form-label">Project Tags:</label>
@@ -27,11 +33,12 @@
         class="form-control"
         id="inputTags"
         placeholder="Tags..."
+        v-model="editable.tags"
       />
     </div>
     <div class="col-12">
       <label for="inputPieceType" class="form-label">Type of Piece</label>
-      <select id="inputPieceType" class="form-select" required>
+      <select id="inputPieceType" class="form-select" v-model="editable.type">
         <option selected>Select a file type...</option>
         <option>Painting/Drawing</option>
         <option>Three Dimensional</option>
@@ -48,6 +55,7 @@
         class="form-control"
         id="inputEventDescription"
         required="true"
+        v-model="editable.description"
       ></textarea>
     </div>
     <div class="col-12 mt-5 d-flex justify-content-between">
@@ -61,6 +69,7 @@
 import { ref } from '@vue/reactivity';
 import { piecesService } from '../services/PiecesService';
 import { firebaseService } from '../services/FirebaseService';
+import Pop from "../utils/Pop";
 export default {
   setup() {
 
@@ -72,9 +81,11 @@ export default {
         const form = event.target
         const imgInput = form.inputImgSrc
         const file = imgInput.files[0]
+        Pop.toast("Piece has been created!")
         if (!file) { return }
         const url = await firebaseService.uploadFile(file, editable.value)
         editable.value.coverImg = url
+        editable.value.tags.split(', ')
         // FIXME make the form actually work
         await piecesService.createPiece(editable.value)
         editable.value = {}

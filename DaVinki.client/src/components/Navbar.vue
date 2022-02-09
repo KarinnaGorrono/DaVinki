@@ -28,12 +28,13 @@
         </li>
       </ul> -->
 
-      <form class="d-flex">
+      <form class="d-flex" @submit.prevent="searchPieces()">
         <input
           class="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          v-model="editable"
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -72,7 +73,7 @@
             class="dropdown-menu p-0 list-group w-100"
             aria-labelledby="authDropdown"
           >
-            <router-link :to="{ name: 'Account' }">
+            <router-link :to="{ name: 'Commissions' }">
               <div class="list-group-item list-group-item-action hoverable">
                 Manage Account
               </div>
@@ -98,9 +99,13 @@
 <script>
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import Pop from "../utils/Pop"
+import { logger } from "../utils/Logger"
+import { piecesService } from "../services/PiecesService"
 export default {
   setup() {
+    const editable = ref("");
     return {
       user: computed(() => AppState.user),
       async login() {
@@ -108,7 +113,16 @@ export default {
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
-      }
+      },
+      async searchPieces() {
+        try {
+          await piecesService.searchPieces(editable.value);
+        } catch (error) {
+          Pop(error.message, "cannot search art")
+          logger.log(error.message)
+        }
+      },
+      editable
     }
   }
 }

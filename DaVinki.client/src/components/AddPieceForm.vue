@@ -8,6 +8,7 @@
         class="form-control"
         id="inputProjectName"
         placeholder="Project Name..."
+        v-model="editable.name"
       />
     </div>
     <div class="col-md-8">
@@ -63,12 +64,10 @@ import { firebaseService } from '../services/FirebaseService';
 export default {
   setup() {
 
-
-
-
     const editable = ref({})
 
     return {
+      editable,
       async postPiece() {
         const form = event.target
         const imgInput = form.inputImgSrc

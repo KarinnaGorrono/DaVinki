@@ -54,6 +54,14 @@
           >
             Edit Profile
           </button>
+          <Modal id="editProfile">
+            <template #modal-title>
+              <h4>Edit Profile</h4>
+            </template>
+            <template #modal-body>
+              <EditProfile />
+            </template>
+          </Modal>
         </div>
       </div>
     </div>

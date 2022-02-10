@@ -40,8 +40,8 @@
       <label for="inputPieceType" class="form-label">Type of Piece</label>
       <select id="inputPieceType" class="form-select" v-model="editable.type">
         <option selected>Select a file type...</option>
-        <option>Painting/Drawing</option>
-        <option>Three Dimensional</option>
+        <option>Drawings/Paintings</option>
+        <option>threeDimensional</option>
         <option>Photography</option>
       </select>
     </div>

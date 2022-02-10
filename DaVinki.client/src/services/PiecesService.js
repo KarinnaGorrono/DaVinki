@@ -42,10 +42,12 @@ class PiecesService {
         logger.log(AppState.pieces)
     }
 
-    async getSearchPieces(query = '') {
-        const res = await api.get('api/pieces?query=')
+    async getSearchPieces(query = {}) {
+        debugger
+        const res = await api.get('api/pieces?query=' + query.query)
         logger.log('getting search by piece', res.data)
         AppState.pieces = res.data
+        AppState.searchResults = res.data.results
 
     }
 

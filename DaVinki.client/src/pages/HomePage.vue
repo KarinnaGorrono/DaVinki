@@ -4,12 +4,8 @@
       <Navbar />
       <SecondaryNavbar />
     </header>
-    <main>
-      <div
-        class="masonry-with-columns py-2"
-        v-for="p in filteredPieces"
-        :key="p.id"
-      >
+    <main class="masonry-with-columns p-2">
+      <div v-for="p in filteredPieces" :key="p.id" class="my-2">
         <Piece :piece="p" />
       </div>
     </main>
@@ -111,10 +107,10 @@ body {
 
 .masonry-with-columns {
   columns: 500px !important;
-  column-gap: 2rem;
+  column-gap: 1rem;
   div {
     width: 150px;
-    margin: 1rem 1rem 1rem 2rem;
+    // margin: 1rem 1rem 1rem 2rem;
     display: inline-block;
     width: 100%;
     font-weight: 900;

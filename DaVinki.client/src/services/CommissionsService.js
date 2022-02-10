@@ -5,7 +5,6 @@ import { api } from "./AxiosService"
 class CommissionsService {
     async getCommission(artistId) {
         const res = await api.get('api/commissions')
-        debugger
         logger.log('active', res.data)
         AppState.activeCommission = res.data
     }

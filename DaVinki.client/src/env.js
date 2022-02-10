@@ -6,11 +6,11 @@ export const clientId = 'glXQ2lBOMkhnGGdXTJNchjGebJJK9yvt'
 export const audience = 'https://DaVinki.com'
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCpWVCOTxJHg-_X3UUaUe-tg8PYHFBXQO4",
-  authDomain: "davinki-c6a76.firebaseapp.com",
-  projectId: "davinki-c6a76",
-  storageBucket: "davinki-c6a76.appspot.com",
-  messagingSenderId: "837566518810",
-  appId: "1:837566518810:web:a4d733e3823e6bf33ae3a3",
-  measurementId: "G-P8RJLLGD55"
+  apiKey: "AIzaSyCJLBCLNoi-RSqbbsgVe_WMUlXziXBf1aQ",
+  authDomain: "da-vinki.firebaseapp.com",
+  projectId: "da-vinki",
+  storageBucket: "da-vinki.appspot.com",
+  messagingSenderId: "979507070213",
+  appId: "1:979507070213:web:082df3953dff82a793636c",
+  measurementId: "G-ZC0RZVNT7C"
 };

@@ -62,7 +62,6 @@ export default {
     onMounted(async () => {
       try {
         await piecesService.getAllPieces()
-        await piecesService.getSearchPieces()
         loading.value = false
       } catch (error) {
         logger.error(error)

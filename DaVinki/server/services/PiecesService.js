@@ -4,20 +4,8 @@ import { dbContext } from "../db/DbContext"
 class PiecesService {
     async getAll(searchTerm = '') {
         const term = new RegExp(searchTerm, 'ig')
-        // if (!query.name && searchTerm) {
-        //     query.name = searchTerm
-        // }
-        // if (!query.tags && searchTerm) {
-        //     query.tags = searchTerm
-        // }
-        // if (query.name) {
-        //     query.name = { $regex: new RegExp(query.name, 'ig') }
-        // }
-        // if (query.tags) {
-        //     query.tags = { $regex: new RegExp(query.tags, 'ig') }
-        // }
         const pieces = await dbContext.Pieces.find({
-            $or: [{ name: term }, { tags: term }, { type: term }]
+            $or: [{ name: term }, { tags: term }, { type: term }, { description: term }]
         }).populate('artist', 'name picture')
         return pieces
     }

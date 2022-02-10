@@ -62,15 +62,18 @@ export default {
     onMounted(async () => {
       try {
         await piecesService.getAllPieces()
+        await piecesService.getSearchPieces()
         loading.value = false
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'Error')
       }
+
     })
     return {
       filteredPieces: computed(() => AppState.filteredPieces),
       pieces: computed(() => AppState.pieces),
+      searchResults: computed(() => AppState.searchResults),
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       async login() {

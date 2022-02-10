@@ -19,7 +19,7 @@ class FirebaseService {
       const pieceRef = ref(storage, `${userId}/${piece.name}/${file.name}`)
       const res = await uploadBytes(pieceRef, file)
       // REGEX / \/ /  + \+ +, -
-      return 'https://firebasestorage.googleapis.com/v0/b/davinki-c6a76.appspot.com/o/' + pieceRef.fullPath.replace(/\//ig, '%2F') + '?alt=media'
+      return 'https://firebasestorage.googleapis.com/v0/b/da-vinki.appspot.com/o/' + pieceRef.fullPath.replace(/\//ig, '%2F') + '?alt=media'
     } catch (error) {
       Pop.toast(error.message, 'error')
     }

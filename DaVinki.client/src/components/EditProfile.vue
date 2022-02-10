@@ -99,6 +99,7 @@
       </div>
       <div class="col-12 d-flex justify-content-end">
         <button
+
         class="btn btn-success">Save</button>
       </div>
     </div>
@@ -112,16 +113,20 @@ import { logger } from "../utils/Logger";
 import { useRoute } from "vue-router";
 import { accountService } from '../services/AccountService';
 import { AppState } from '../AppState';
+import {Modal} from "bootstrap"
 export default {
   setup() {
     const route = useRoute();
     const editable = ref({});
     return {
       editable,
+      
       async editProfile() {
         try {
           await accountService.edit(editable.value, route.params.id);
-          editable.value = {};
+            editable.value = {};
+          Modal.getOrCreateInstance(
+            document.getElementById("editProfile")).hide() ;
           Pop.toast("Profile Changed Successfully");
         } catch (error) {
           Pop.toast(error.message, "error");

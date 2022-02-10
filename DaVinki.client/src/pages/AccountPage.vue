@@ -92,22 +92,44 @@
             </template>
           </Modal>
         </div>
+     
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
+import { piecesService } from '../services/PiecesService'
+import Piece from '../components/Piece.vue'
+import { useRoute } from 'vue-router'
+
 export default {
+  components: { Piece },
   props: {
-    account: { type: Object, required: true }
-  },
+    account: { type: Object, required: true },
+    piece: { type: Object, required: true}
+    },
   name: 'Account',
   setup() {
+    const route = useRoute()
+   onMounted(async () => {
+      try {
+        await piecesService.getAllPieces( route.params.id)
+       
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'Error')
+      }
+    })
+    
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      pieces: computed(() => AppState.pieces),
+   
     }
   }
 }

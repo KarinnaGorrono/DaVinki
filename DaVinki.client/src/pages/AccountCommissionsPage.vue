@@ -1,18 +1,27 @@
 <template>
   <div class="row">
-    <div class="col-md-12 d-flex">
-      <table class="">
-        <tr>
-          <th>Piece</th>
-          <th>Deadline</th>
-          <th>Status</th>
-        </tr>
-        <tr>
-          <td>Commission Name</td>
-          <td>Commission Deadline</td>
-          <td>Commission Status</td>
-        </tr>
-      </table>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-around">
+          <h3>Piece</h3>
+          <h3>Deadline</h3>
+          <h3>Status</h3>
+        </div>
+      </div>
+      <div class="row">
+        <!-- V-for in commissions on this row^^ -->
+        <div class="col-md-12 d-flex justify-content-around">
+          <div>
+            <p>commission name</p>
+          </div>
+          <div>
+            <p>commission deadline</p>
+          </div>
+          <div>
+            <p>commission status</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

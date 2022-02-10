@@ -4,9 +4,10 @@ import { api } from "./AxiosService"
 
 class CommissionsService {
     async getCommission(artistId) {
-        const active = AppState.commissions.find(c => c.id === artistId)
-        logger.log('active', active)
-        AppState.activeCommission = active
+        const res = await api.get('api/commissions')
+        debugger
+        logger.log('active', res.data)
+        AppState.activeCommission = res.data
     }
 
     async createCommission() {
@@ -16,7 +17,7 @@ class CommissionsService {
     }
 
     async editCommission(updatedCommission) {
-        const res = await api.put('a[i/commissions/' + updatedCommission.id, updatedCommission)
+        const res = await api.put('api/commissions/' + updatedCommission.id, updatedCommission)
         logger.log(res.data)
         AppState.activeCommission = new Commission(res.data)
     }

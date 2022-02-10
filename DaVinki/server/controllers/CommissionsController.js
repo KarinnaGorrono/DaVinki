@@ -5,7 +5,7 @@ import BaseController from "../utils/BaseController";
 
 export class CommissionsController extends BaseController {
     constructor() {
-        super('api/account/commissions')
+        super('api/commissions')
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
             .get('', this.getByAccount)

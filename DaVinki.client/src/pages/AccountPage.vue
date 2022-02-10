@@ -22,6 +22,7 @@
 
       <div class="col-md-6">
         <div class="row">
+          </div>
 <div class="col-md-6">
         <div class="my-2 d-flex">
           <img :src="account.picture" alt="" />

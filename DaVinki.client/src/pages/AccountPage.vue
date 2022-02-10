@@ -1,7 +1,7 @@
 <template>
   <header>
     <Navbar />
-    <SecondaryNavbar />
+   
   </header>
   <main class="row">
     <div class="col-md-12 my-3 d-flex justify-content-center">
@@ -30,16 +30,16 @@
         <div class="col-md-6 ">
           <div class="py-4">
 
-          <h5>Address:</h5>
+          <h5>Address: {{ account.address}}</h5>
           </div>
         <div class="py-4"> 
-          <h5>Facebook:</h5>
+          <h5>Facebook: {{ account.facebook}}</h5>
         </div>
         <div class="py-4">
-          <h5>Instagram:</h5>
+          <h5>Instagram: {{account.instagram}}</h5>
         </div>
         <div class="py-4">
-          <h5>Accepting Commissions</h5>
+          <h5>Accepting Commissions:  {{ account.acceptingCommissions }}</h5>
         </div>
         </div>
 </div>

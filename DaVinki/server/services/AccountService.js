@@ -38,7 +38,7 @@ function sanitizeBody(body) {
   const writable = {
     name: body.name,
     picture: body.picture,
-    address: body.address,
+    location: body.location,
     facebook: body.facebook,
     instagram: body.instagram,
     acceptingCommissions: body.acceptingCommissions

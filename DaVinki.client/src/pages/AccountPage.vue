@@ -7,6 +7,7 @@
     <div class="col-md-6">
       <h1>{{ account.name }}</h1>
     </div>
+    <!-- Account pages here  -->
     <div class="row">
       <div class="col-md-6">
         <div class="row">
@@ -19,28 +20,30 @@
           <router-view />
         </div>
       </div>
-
+      <!-- Account info here  -->
       <div class="col-md-6">
-        <div class="row"></div>
-        <div class="col-md-6">
-          <div class="my-2 d-flex">
-            <img :src="account.picture" alt="" />
+        <div class="row">
+          <div class="col-md-6">
+            <div class="my-2 d-flex">
+              <img :src="account.picture" alt="" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="py-4">
+              <h5>Location: {{ account.location }}</h5>
+            </div>
+            <div class="py-4">
+              <h5>Facebook: {{ account.facebook }}</h5>
+            </div>
+            <div class="py-4">
+              <h5>Instagram: {{ account.instagram }}</h5>
+            </div>
+            <div class="py-4">
+              <h5>Accepting Commissions: {{ account.acceptingCommissions }}</h5>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="py-4">
-            <h5>Address: {{ account.address }}</h5>
-          </div>
-          <div class="py-4">
-            <h5>Facebook: {{ account.facebook }}</h5>
-          </div>
-          <div class="py-4">
-            <h5>Instagram: {{ account.instagram }}</h5>
-          </div>
-          <div class="py-4">
-            <h5>Accepting Commissions: {{ account.acceptingCommissions }}</h5>
-          </div>
-        </div>
+
         <div class="row">
           <div class="py-4">
             <p>
@@ -56,43 +59,43 @@
             end." -Margaret Thatcher
           </div>
         </div>
-        <div class="d-flex justify-content-end py-5">
-          <button
-            class="btn btn-outline-success"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#addPiece"
-            aria-label="Toggle Edit modal"
-          >
-            Add Piece
-          </button>
-          <Modal id="addPiece">
-            <template #modal-title>
-              <h4>Add New Piece</h4>
-            </template>
-            <template #modal-body>
-              <AddPieceForm />
-            </template>
-          </Modal>
+      </div>
+      <div class="d-flex justify-content-end py-5">
+        <button
+          class="btn btn-outline-success"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#addPiece"
+          aria-label="Toggle Edit modal"
+        >
+          Add Piece
+        </button>
+        <Modal id="addPiece">
+          <template #modal-title>
+            <h4>Add New Piece</h4>
+          </template>
+          <template #modal-body>
+            <AddPieceForm />
+          </template>
+        </Modal>
 
-          <button
-            class="btn btn-outline-success"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#editProfile"
-            aria-label="Toggle Edit modal"
-          >
-            Edit Profile
-          </button>
-          <Modal id="editProfile">
-            <template #modal-title>
-              <h4>Edit Profile</h4>
-            </template>
-            <template #modal-body>
-              <EditProfile />
-            </template>
-          </Modal>
-        </div>
+        <button
+          class="btn btn-outline-success"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#editProfile"
+          aria-label="Toggle Edit modal"
+        >
+          Edit Profile
+        </button>
+        <Modal id="editProfile">
+          <template #modal-title>
+            <h4>Edit Profile</h4>
+          </template>
+          <template #modal-body>
+            <EditProfile />
+          </template>
+        </Modal>
       </div>
       <div v-for="p in pieces" :key="p.id">
         <Piece :piece="p" />
@@ -122,7 +125,7 @@ export default {
     const route = useRoute()
     onMounted(async () => {
       try {
-        await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
+        // await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
 
       } catch (error) {
         logger.error(error)

@@ -1,7 +1,6 @@
 <template>
   <header>
     <Navbar />
-   
   </header>
   <main class="row">
     <div class="col-md-12 my-3 d-flex justify-content-center">
@@ -21,27 +20,25 @@
       </div>
 
       <div class="col-md-6">
-        <div class="row">
-  </div>
-  <div class="col-md-6">
-        <div class="my-2 d-flex">
-          <img :src="account.picture" alt="" />
-        </div>
-        </div>
-        <div class="col-md-6 ">
-          <div class="py-4">
-
-          <h5>Address: {{ account.address}}</h5>
+        <div class="row"></div>
+        <div class="col-md-6">
+          <div class="my-2 d-flex">
+            <img :src="account.picture" alt="" />
           </div>
-        <div class="py-4"> 
-          <h5>Facebook: {{ account.facebook}}</h5>
         </div>
-        <div class="py-4">
-          <h5>Instagram: {{account.instagram}}</h5>
-        </div>
-        <div class="py-4">
-          <h5>Accepting Commissions:  {{ account.acceptingCommissions }}</h5>
-        </div>
+        <div class="col-md-6">
+          <div class="py-4">
+            <h5>Address: {{ account.address }}</h5>
+          </div>
+          <div class="py-4">
+            <h5>Facebook: {{ account.facebook }}</h5>
+          </div>
+          <div class="py-4">
+            <h5>Instagram: {{ account.instagram }}</h5>
+          </div>
+          <div class="py-4">
+            <h5>Accepting Commissions: {{ account.acceptingCommissions }}</h5>
+          </div>
         </div>
         <div class="row">
           <div class="py-4">

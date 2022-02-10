@@ -125,7 +125,7 @@ export default {
     const route = useRoute()
     onMounted(async () => {
       try {
-        await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
+        // await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
 
       } catch (error) {
         logger.error(error)

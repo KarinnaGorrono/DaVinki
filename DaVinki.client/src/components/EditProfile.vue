@@ -73,15 +73,7 @@
           v-model="editable.picture"
         />
       </div>
-      <div class="col-md-6 mb-2">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Cover Image..."
-          v-model="editable.coverImg"
-        />
-      </div>
-      <div class="col-12 mb-2">
+<div class="col-12 mb-2">
         <textarea
           type="text"
           class="form-control"

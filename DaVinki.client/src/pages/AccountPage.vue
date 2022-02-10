@@ -92,8 +92,11 @@
             </template>
           </Modal>
         </div>
-     
-      </div>
+         </div>
+         <!-- <div >
+           <Piece/>
+         </div> -->
+
     </div>
   </main>
 </template>
@@ -118,7 +121,7 @@ export default {
     const route = useRoute()
    onMounted(async () => {
       try {
-        await piecesService.getAllPieces( route.params.id)
+        await piecesService.getPieceById( route.params.id)
        
       } catch (error) {
         logger.error(error)
@@ -128,7 +131,7 @@ export default {
     
     return {
       account: computed(() => AppState.account),
-      pieces: computed(() => AppState.pieces),
+      pieces: computed(() => AppState.pieces.find(p => p.creatorId == accountId)),
    
     }
   }

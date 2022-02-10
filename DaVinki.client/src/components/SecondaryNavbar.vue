@@ -2,6 +2,9 @@
   <div class="row bg-white pt-2">
     <div class="col-md-12 d-flex justify-content-around text-uppercase">
       <div>
+        <h5 class="selectable" @click="ResetPieces('All')" href="#">All</h5>
+      </div>
+      <div>
         <h5
           class="selectable"
           @click="filterPieces('Drawings/Paintings')"
@@ -56,7 +59,17 @@ export default {
         logger.log
           (filteredPieces)
         AppState.filteredPieces = filteredPieces
+      },
+      ResetPieces() {
+        AppState.filteredPieces = AppState.pieces
+        logger.log
+
+
+
+
+
       }
+
     };
   }
 }

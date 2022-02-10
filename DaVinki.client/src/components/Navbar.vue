@@ -34,7 +34,7 @@
           type="search"
           placeholder="Search"
           aria-label="Search"
-          v-model="editable"
+          v-model="editable.query"
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -105,7 +105,7 @@ import { logger } from "../utils/Logger"
 import { piecesService } from "../services/PiecesService"
 export default {
   setup() {
-    const editable = ref("");
+    const editable = ref({});
     return {
       user: computed(() => AppState.user),
       async login() {

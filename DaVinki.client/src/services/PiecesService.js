@@ -15,8 +15,9 @@ class PiecesService {
         AppState.filteredPieces = res.data
     }
 
-    async getPieceById(pieceId) {
+    async getPieceById(pieceId, query = '') {
         const active = AppState.pieces.find(p => p.id === pieceId)
+        const res = await api.get('api/pieces' + query + '')
         logger.log('active', active)
         AppState.activePiece = active
     }

@@ -93,9 +93,10 @@
           </Modal>
         </div>
          </div>
-         <!-- <div >
-           <Piece/>
-         </div> -->
+         <div v-for=" p in pieces" 
+         :key="p.id">
+           <Piece :piece="p"/>
+         </div>
 
     </div>
   </main>
@@ -109,6 +110,7 @@ import Pop from '../utils/Pop'
 import { piecesService } from '../services/PiecesService'
 import Piece from '../components/Piece.vue'
 import { useRoute } from 'vue-router'
+import { AuthService } from '../services/AuthService'
 
 export default {
   components: { Piece },
@@ -121,7 +123,7 @@ export default {
     const route = useRoute()
    onMounted(async () => {
       try {
-        await piecesService.getPieceById( route.params.id)
+        // await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
        
       } catch (error) {
         logger.error(error)
@@ -131,7 +133,7 @@ export default {
     
     return {
       account: computed(() => AppState.account),
-      pieces: computed(() => AppState.pieces.find(p => p.creatorId == accountId)),
+      pieces: computed(() => AppState.pieces),
    
     }
   }

@@ -17,8 +17,13 @@ export class PiecesController extends BaseController {
 
     async getAll(req, res, next) {
         try {
-            const searchTerm = req.query.query || ''
-            const pieces = await piecesService.getAll(searchTerm)
+            const searchTerm = req.query.query
+            let pieces;
+            if (searchTerm) {
+                pieces = await piecesService.searchAll(searchTerm)
+            } else {
+                pieces = await piecesService.getAll(req.query)
+            }
             return res.send(pieces)
         } catch (error) {
             next(error)

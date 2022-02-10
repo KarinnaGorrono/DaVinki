@@ -2,7 +2,14 @@ import { BadRequest } from "@bcwdev/auth0provider/lib/Errors"
 import { dbContext } from "../db/DbContext"
 
 class PiecesService {
-    async getAll(searchTerm = '') {
+
+    async getAll(query = {}) {
+        const pieces = await dbContext.Pieces.find(query).populate('artist', 'name picture')
+        return pieces
+    }
+
+
+    async searchAll(searchTerm = '') {
         const term = new RegExp(searchTerm, 'ig')
         // if (!query.name && searchTerm) {
         //     query.name = searchTerm

@@ -3,7 +3,8 @@
     <Navbar />
   </header>
   <main class="row">
-    <div class="col-md-12 my-3 d-flex justify-content-center">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
       <h1>{{ account.name }}</h1>
     </div>
     <div class="row">

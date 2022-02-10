@@ -28,7 +28,7 @@
         </li>
       </ul> -->
 
-      <form class="d-flex" @submit.prevent="searchPieces()">
+      <form class="d-flex" @submit.prevent="getSearchPieces()">
         <input
           class="form-control me-2"
           type="search"
@@ -114,11 +114,11 @@ export default {
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
       },
-      async searchPieces() {
+      async getSearchPieces() {
         try {
-          await piecesService.searchPieces(editable.value);
+          await piecesService.getSearchPieces(editable.value);
         } catch (error) {
-          Pop(error.message, "cannot search art")
+          Pop.toast(error.message, "error")
           logger.log(error.message)
         }
       },

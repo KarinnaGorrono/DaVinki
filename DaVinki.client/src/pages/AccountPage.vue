@@ -6,8 +6,8 @@
   <main class="row">
     <div class="col-md-12 my-3 d-flex justify-content-center">
       <h1>{{ account.name }}</h1>
-     </div>
-     <div class="row">
+    </div>
+    <div class="row">
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12 d-flex justify-content-around">
@@ -19,41 +19,43 @@
           <router-view />
         </div>
       </div>
-      
+
       <div class="col-md-6">
         <div class="row">
-<div class="col-md-6">
-        <div class="my-2 d-flex">
-          <img :src="account.picture" alt="" />
-        </div>
-        </div>
-        <div class="col-md-6 ">
-          <div class="py-4">
-
-          <h5>Address:</h5>
+          <div class="col-md-6">
+            <div class="my-2 d-flex">
+              <img :src="account.picture" alt="" />
+            </div>
           </div>
-        <div class="py-4"> 
-          <h5>Facebook:</h5>
+          <div class="col-md-6">
+            <div class="py-4">
+              <h5>Address:</h5>
+            </div>
+            <div class="py-4">
+              <h5>Facebook:</h5>
+            </div>
+            <div class="py-4">
+              <h5>Instagram:</h5>
+            </div>
+            <div class="py-4">
+              <h5>Accepting Commissions</h5>
+            </div>
+          </div>
         </div>
-        <div class="py-4">
-          <h5>Instagram:</h5>
-        </div>
-        <div class="py-4">
-          <h5>Accepting Commissions</h5>
-        </div>
-        </div>
-</div>
         <div class="row">
-        <div class="py-4">
-          <p>{{ account.biography }}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quidem, ratione illum in incidunt earum voluptates excepturi dicta rem perferendis ducimus enim molestias, consectetur voluptas soluta molestiae velit iure quis!
-          </p>
-        </div>
-        <div class="py-3">
-             "I am extraordinarily patient, provided I get my own way in the end."
-               -Margaret Thatcher
-        </div>
-        
+          <div class="py-4">
+            <p>
+              {{ account.biography }}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              quidem, ratione illum in incidunt earum voluptates excepturi dicta
+              rem perferendis ducimus enim molestias, consectetur voluptas
+              soluta molestiae velit iure quis!
+            </p>
+          </div>
+          <div class="py-3">
+            "I am extraordinarily patient, provided I get my own way in the
+            end." -Margaret Thatcher
+          </div>
         </div>
         <div class="d-flex justify-content-end py-5">
           <button
@@ -92,12 +94,10 @@
             </template>
           </Modal>
         </div>
-         </div>
-         <div v-for=" p in pieces" 
-         :key="p.id">
-           <Piece :piece="p"/>
-         </div>
-
+      </div>
+      <div v-for="p in pieces" :key="p.id">
+        <Piece :piece="p" />
+      </div>
     </div>
   </main>
 </template>
@@ -116,25 +116,25 @@ export default {
   components: { Piece },
   props: {
     account: { type: Object, required: true },
-    piece: { type: Object, required: true}
-    },
+    piece: { type: Object, required: true }
+  },
   name: 'Account',
   setup() {
     const route = useRoute()
-   onMounted(async () => {
+    onMounted(async () => {
       try {
         // await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
-       
+
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'Error')
       }
     })
-    
+
     return {
       account: computed(() => AppState.account),
       pieces: computed(() => AppState.pieces),
-   
+
     }
   }
 }

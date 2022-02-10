@@ -17,7 +17,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="pt-5">
-              <p>{{ piece.artist.name }}</p>
+              <p @click="goToProfile()">{{ piece.artist.name }}</p>
               <p>{{ piece.createdDate }}</p>
             </div>
           </div>
@@ -53,7 +53,7 @@ import { ref, watchEffect } from "@vue/runtime-core"
 import Pop from "../utils/Pop"
 import { piecesService } from "../services/PiecesService"
 import { logger } from "../utils/Logger"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 export default {
   props: {
     piece: { type: Object, required: true }
@@ -61,6 +61,7 @@ export default {
   setup(props) {
     const route = useRoute()
     const editable = ref({})
+    const router = useRouter()
     watchEffect(() => {
       editable.value = { ...props.piece }
     })
@@ -78,6 +79,12 @@ export default {
           Pop.toast(error.message, 'error')
           logger.log(error.message)
         }
+      },
+      async goToProfile() {
+        router.push({
+          name: "Profile",
+          params: { id: props.piece.creatorId },
+        });
       }
     }
   }

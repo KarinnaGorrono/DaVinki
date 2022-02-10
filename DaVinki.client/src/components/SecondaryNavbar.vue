@@ -40,7 +40,8 @@ export default {
   setup() {
     onMounted(async () => {
       try {
-        await piecesService.getAllPieces()
+        // FIXME consider another solution
+        // await piecesService.getAllPieces()
       } catch (error) {
         Pop.toast(error.message, "error")
         logger.log(error)

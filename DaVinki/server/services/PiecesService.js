@@ -17,7 +17,7 @@ class PiecesService {
         //     query.tags = { $regex: new RegExp(query.tags, 'ig') }
         // }
         const pieces = await dbContext.Pieces.find({
-            $or: [{ name: term }, { tags: term }]
+            $or: [{ name: term }, { tags: term }, { type: term }]
         }).populate('artist', 'name picture')
         return pieces
     }

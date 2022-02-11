@@ -97,7 +97,7 @@
           </template>
         </Modal>
       </div>
-      <div v-for="p in pieces" :key="p.id">
+      <div v-for="p in myPieces" :key="p.id">
         <Piece :piece="p" />
       </div>
     </div>
@@ -113,31 +113,35 @@ import { piecesService } from '../services/PiecesService'
 import Piece from '../components/Piece.vue'
 import { useRoute } from 'vue-router'
 import { AuthService } from '../services/AuthService'
+import { firebaseService } from '../services/FirebaseService';
 
 export default {
   components: { Piece },
-  props: {
-    account: { type: Object, required: true },
-    piece: { type: Object, required: true }
-  },
+  // props: {
+  //   account: { type: Object, required: true },
+  //   piece: { type: Object, required: true }
+  // },
   name: 'Account',
   setup() {
     const route = useRoute()
-    onMounted(async () => {
-      try {
-        // await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
+    // onMounted(async () => {
+    //   try {
+    //     await piecesService.getMyPieces()
+    //     console.log('getting my pieces')
 
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'Error')
-      }
-    })
+    //   } catch (error) {
+    //     logger.error(error)
+    //     Pop.toast(error.message, 'Error')
+    //   }
+    // })
 
     return {
       account: computed(() => AppState.account),
-      pieces: computed(() => AppState.pieces),
+      // pieces: computed(() => AppState.pieces),
+      myPieces: computed(() => AppState.myPieces)
 
     }
+
   }
 }
 </script>

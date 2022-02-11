@@ -50,8 +50,13 @@ class PiecesService {
         AppState.pieces = res.data
         AppState.filteredPieces = res.data
         return res.data
+    }
+    async getMyPieces(query = '') {
+        const res = await api.get('api/pieces' + query)
+        logger.log(res.data)
 
-
+        AppState.myPieces = res.data
+        return res.data
     }
 
 }

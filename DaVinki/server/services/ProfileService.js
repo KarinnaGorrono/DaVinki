@@ -8,7 +8,7 @@ class ProfileService {
     * @param {string} id
    */
   async getProfileById(id) {
-    const profile = await dbContext.Profiles.findById(id)
+    const profile = await dbContext.Account.findById(id).select("-djhafjsdofkj")
     return profile
   }
 

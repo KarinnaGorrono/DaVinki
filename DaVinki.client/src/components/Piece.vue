@@ -17,7 +17,9 @@
         <div class="row">
           <div class="col-md-3">
             <div class="pt-5">
-              <p @click="goToProfile()">{{ piece.artist.name }}</p>
+              <p class="selectable" @click="goToProfile()">
+                {{ piece.artist.name }}
+              </p>
               <p>{{ piece.createdDate }}</p>
             </div>
           </div>

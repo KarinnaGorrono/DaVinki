@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="editProfile()">
+  <form @submit.prevent="profilePic()">
     <div class="row justify-content-center align-items-center elevation-3 my-3">
       <div class="col-md-5 mb-2">
         <input
@@ -103,26 +103,13 @@ import { useRoute } from "vue-router";
 import { accountService } from '../services/AccountService';
 import { AppState } from '../AppState';
 import { Modal } from "bootstrap"
+import { firebaseService } from '../services/FirebaseService';
 export default {
   setup() {
     const route = useRoute();
     const editable = ref({});
     return {
       editable,
-
-      async editProfile() {
-        try {
-          await accountService.edit(editable.value, route.params.id);
-          editable.value = {};
-          Modal.getOrCreateInstance(
-            document.getElementById("editProfile")).hide();
-          Pop.toast("Profile Changed Successfully");
-        } catch (error) {
-          Pop.toast(error.message, "error");
-          logger.log(error);
-        }
-      },
-      // NOTE One function of maybe two?? 
 
       async profilePic() {
         const form = event.target
@@ -131,10 +118,10 @@ export default {
         Pop.toast("Profile picture has been updated!")
         if (!file) { return }
         const url = await firebaseService.uploadProfilePic(file, editable.value)
-        editable.value.coverImg = url
-        editable.value.tags.split(', ')
+        editable.value.picture = url
 
-        await accountService.edit(editable.value)
+
+        await accountService.edit(editable.value, route.params.id)
         editable.value = {}
       },
       async uploadTest() {

@@ -7,6 +7,7 @@ class CommissionsService {
         const res = await api.get('api/commissions', artistId)
         logger.log('active', res.data)
         AppState.myCommissions = res.data
+        // Need to map over this data?
     }
 
     async createCommission(body) {

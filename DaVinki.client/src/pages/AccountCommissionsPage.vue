@@ -8,17 +8,17 @@
           <h3>Status</h3>
         </div>
       </div>
-      <div class="row">
+      <div class="row" v-for="c in myCommissions" :key="c.id">
         <!-- V-for in commissions on this row^^ -->
         <div class="col-md-12 d-flex justify-content-around">
           <div>
-            <p>{{ commissions.artist.name }}</p>
+            <p>{{ c.artist.name }}</p>
           </div>
           <div>
-            <p>commission</p>
+            <p>{{ new Date(c.createdAt).toLocaleString() }}</p>
           </div>
           <div>
-            <p>{{ commissions.status }}</p>
+            <p>{{ c.status }}</p>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-      myCommissions: computed(() => AppState.commissions)
+      myCommissions: computed(() => AppState.myCommissions)
     };
 
   }

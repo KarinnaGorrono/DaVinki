@@ -9,7 +9,7 @@ class CommissionsService {
         AppState.commissions = res.data
     }
 
-    async createCommission() {
+    async createCommission(body) {
         const res = await api.post('api/commissions', body)
         logger.log(res.data)
         AppState.commissions.unshift(res.body)

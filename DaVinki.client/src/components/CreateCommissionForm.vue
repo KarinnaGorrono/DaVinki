@@ -60,6 +60,7 @@ export default {
     return {
       async createCommission() {
         try {
+
           await commissionsService.createCommission({ artistId: route.params.id })
         } catch (error) {
           logger.log(error)

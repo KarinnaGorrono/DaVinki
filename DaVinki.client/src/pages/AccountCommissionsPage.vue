@@ -45,7 +45,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-      commissions: computed(() => AppState.commissions)
+      myCommissions: computed(() => AppState.commissions)
     };
 
   }

@@ -47,8 +47,9 @@ class PiecesService {
 
         const res = await api.get('api/pieces?query=' + query.query)
         logger.log('getting search by piece', res.data)
-        AppState.pieces = res.data
+        AppState.myPieces = res.data
         AppState.filteredPieces = res.data
+
         return res.data
     }
     async getMyPieces(query = '') {

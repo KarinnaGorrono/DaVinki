@@ -6,7 +6,7 @@ class CommissionsService {
     async getCommission(artistId) {
         const res = await api.get('api/commissions', artistId)
         logger.log('active', res.data)
-        AppState.commissions = res.data
+        AppState.myCommissions = res.data
     }
 
     async createCommission(body) {

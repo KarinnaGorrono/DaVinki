@@ -97,8 +97,10 @@
           </template>
         </Modal>
       </div>
-      <div v-for="p in myPieces" :key="p.id">
-        <Piece :piece="p" />
+      <div class="col-md-3">
+        <div v-for="p in myPieces" :key="p.id">
+          <Piece :piece="p" />
+        </div>
       </div>
     </div>
   </main>

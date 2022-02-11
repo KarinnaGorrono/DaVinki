@@ -54,6 +54,7 @@ import Pop from "../utils/Pop"
 import { piecesService } from "../services/PiecesService"
 import { logger } from "../utils/Logger"
 import { useRoute, useRouter } from "vue-router"
+
 export default {
   props: {
     piece: { type: Object, required: true }
@@ -86,6 +87,9 @@ export default {
           name: "Profile",
           params: { id: props.piece.creatorId },
         });
+
+        Modal.getOrCreateInstance(
+          document.getElementById("piece-")).hide();
       }
     }
   }

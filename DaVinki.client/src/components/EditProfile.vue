@@ -111,10 +111,27 @@ export default {
     return {
       editable,
 
+      // async editProfile() {
+      //   try {
+      //     await accountService.edit(editable.value, route.params.id);
+      //     // editable.value = {};
+      //     this.profilePic()
+      //     Modal.getOrCreateInstance(
+      //       document.getElementById("editProfile")).hide();
+      //     Pop.toast("Profile Changed Successfully");
+      //   } catch (error) {
+      //     Pop.toast(error.message, "error");
+      //     logger.log(error);
+      //   }
+      // },
+      // NOTE One function of maybe two?? 
+
       async profilePic() {
         const form = event.target
         const imgInput = form.inputImgSrc
         const file = imgInput.files[0]
+        Modal.getOrCreateInstance(
+          document.getElementById("editProfile")).hide();
         Pop.toast("Profile picture has been updated!")
         if (!file) { return }
         const url = await firebaseService.uploadProfilePic(file, editable.value)

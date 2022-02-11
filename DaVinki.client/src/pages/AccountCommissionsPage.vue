@@ -12,7 +12,8 @@
         <!-- V-for in commissions on this row^^ -->
         <div class="col-md-12 d-flex justify-content-around">
           <div>
-            <p>{{ c.artist.name }}</p>
+            <p v-if="isArtist">{{ c.buyer.name }}</p>
+            <p v-else>{{ c.artist.name }}</p>
           </div>
           <div>
             <p>{{ new Date(c.createdAt).toLocaleString() }}</p>

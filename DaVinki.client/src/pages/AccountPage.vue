@@ -38,6 +38,11 @@
             <div class="py-4">
               <h5>Instagram: {{ account.instagram }}</h5>
             </div>
+
+            <div class="py-4">
+              <h5>Artist: {{ account.isArtist }}</h5>
+            </div>
+
             <div class="py-4">
               <h5>Accepting Commissions: {{ account.acceptingCommissions }}</h5>
             </div>

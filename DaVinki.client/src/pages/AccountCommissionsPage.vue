@@ -12,13 +12,13 @@
         <!-- V-for in commissions on this row^^ -->
         <div class="col-md-12 d-flex justify-content-around">
           <div>
-            <p>commission name</p>
+            <p>{{ commissions.artist.name }}</p>
           </div>
           <div>
-            <p>commission deadline</p>
+            <p>commission</p>
           </div>
           <div>
-            <p>commission status</p>
+            <p>{{ commissions.status }}</p>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-      myCommissions: computed(() => AppState.commissions
+      commissions: computed(() => AppState.commissions)
     };
 
   }

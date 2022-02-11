@@ -90,8 +90,10 @@ export default {
           name: "Profile",
           params: { id: props.piece.creatorId },
         })
+
         Modal.getOrCreateInstance(
-          document.getElementById("piece-")).hide();
+          // NOTE remember to use the props to pass id 
+          document.getElementById("piece-" + props.piece.id)).hide();
 
       }
     }

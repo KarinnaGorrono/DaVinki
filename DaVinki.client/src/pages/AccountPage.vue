@@ -97,6 +97,8 @@
           </template>
         </Modal>
       </div>
+    </div>
+    <div class="row">
       <div class="col-md-3">
         <div v-for="p in myPieces" :key="p.id">
           <Piece :piece="p" />
@@ -146,6 +148,8 @@ export default {
 
   }
 }
+
+
 </script>
 
 <style scoped>

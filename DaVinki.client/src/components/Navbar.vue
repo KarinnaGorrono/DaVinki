@@ -62,12 +62,12 @@
             id="authDropdown"
           >
             <img
-              :src="user.picture"
+              :src="account.picture"
               alt="user photo"
               height="40"
               class="rounded"
             />
-            <span class="mx-3 text-success lighten-30">{{ user.name }}</span>
+            <!-- <span class="mx-3 text-success lighten-30">{{ account.name }}</span> -->
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -75,7 +75,7 @@
           >
             <router-link :to="{ name: 'Commissions' }">
               <div class="list-group-item list-group-item-action hoverable">
-                Manage Account
+                Account
               </div>
             </router-link>
             <div
@@ -108,6 +108,7 @@ export default {
     const editable = ref({});
     return {
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
       async login() {
         AuthService.loginWithPopup()
       },

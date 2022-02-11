@@ -64,10 +64,13 @@ export default {
         Pop.toast(error.message, 'Error')
       }
 
+
+
     })
     return {
       filteredPieces: computed(() => AppState.filteredPieces),
       pieces: computed(() => AppState.pieces),
+      myPieces: computed(() => AppState.myPieces),
       searchResults: computed(() => AppState.searchResults),
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),

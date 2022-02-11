@@ -56,7 +56,7 @@ class PiecesService {
         logger.log(res.data)
 
         AppState.myPieces = res.data
-
+        return res.data
     }
 
 }

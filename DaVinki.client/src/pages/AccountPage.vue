@@ -124,18 +124,20 @@ export default {
   setup() {
     const route = useRoute()
     onMounted(async () => {
-      try {
-        // await piecesService.getAllPieces("?creatorId=" + AppState.account.id)
+      // try {
+      //   await piecesService.getMyPieces(AuthService.userInfo.id)
+      //   console.log('getting my pieces')
 
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'Error')
-      }
+      // } catch (error) {
+      //   logger.error(error)
+      //   Pop.toast(error.message, 'Error')
+      // }
     })
 
     return {
       account: computed(() => AppState.account),
       pieces: computed(() => AppState.pieces),
+      myPieces: computed(() => AppState.myPieces)
 
     }
   }

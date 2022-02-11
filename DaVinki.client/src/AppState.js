@@ -13,5 +13,6 @@ export const AppState = reactive({
   filteredPieces: [],
   searchResults: [],
   resetPieces: [],
+  profile: {},
   myPieces: []
 })

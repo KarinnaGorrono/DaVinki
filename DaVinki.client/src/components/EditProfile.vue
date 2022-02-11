@@ -47,8 +47,7 @@
           name="isArtist"
           id="isArtist"
           class="form-control"
-           >
-      
+        >
           <option disabled selected value="">Artist</option>
           <option>true</option>
           <option>false</option>
@@ -67,13 +66,13 @@
       </div>
       <div class="col-md-6 mb-2">
         <input
-          type="text"
-          class="form-control"
+          type="file"
+          class="form-label"
           placeholder="Profile Picture..."
-          v-model="editable.picture"
+          id="inputImgSrc"
         />
       </div>
-<div class="col-12 mb-2">
+      <div class="col-12 mb-2">
         <textarea
           type="text"
           class="form-control"
@@ -90,9 +89,7 @@
         />
       </div>
       <div class="col-12 d-flex justify-content-end">
-        <button
-
-        class="btn btn-success">Save</button>
+        <button class="btn btn-success">Save</button>
       </div>
     </div>
   </form>
@@ -105,28 +102,48 @@ import { logger } from "../utils/Logger";
 import { useRoute } from "vue-router";
 import { accountService } from '../services/AccountService';
 import { AppState } from '../AppState';
-import {Modal} from "bootstrap"
+import { Modal } from "bootstrap"
 export default {
   setup() {
     const route = useRoute();
     const editable = ref({});
     return {
       editable,
-      
+
       async editProfile() {
         try {
           await accountService.edit(editable.value, route.params.id);
-            editable.value = {};
+          editable.value = {};
           Modal.getOrCreateInstance(
-            document.getElementById("editProfile")).hide() ;
+            document.getElementById("editProfile")).hide();
           Pop.toast("Profile Changed Successfully");
         } catch (error) {
           Pop.toast(error.message, "error");
           logger.log(error);
         }
       },
-     
+      // NOTE One function of maybe two?? 
+
+      async profilePic() {
+        const form = event.target
+        const imgInput = form.inputImgSrc
+        const file = imgInput.files[0]
+        Pop.toast("Profile picture has been updated!")
+        if (!file) { return }
+        const url = await firebaseService.uploadProfilePic(file, editable.value)
+        editable.value.coverImg = url
+        editable.value.tags.split(', ')
+
+        await accountService.edit(editable.value)
+        editable.value = {}
+      },
+      async uploadTest() {
+      }
+
+
     };
+
+
   },
 };
 </script>

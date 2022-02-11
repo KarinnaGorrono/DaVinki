@@ -25,7 +25,19 @@ class FirebaseService {
     }
 
   }
+  async uploadProfilePic(file, user) {
+    try {
+      const userId = AppState.account.id
+      const userRef = ref(storage, `${userId}/${user.name}/${file.name}`)
+      const res = await uploadBytes(userRef, file)
+      // REGEX / \/ /  + \+ +, -
+      return 'https://firebasestorage.googleapis.com/v0/b/da-vinki.appspot.com/o/' + userRef.fullPath.replace(/\//ig, '%2F') + '?alt=media'
+    } catch (error) {
+      Pop.toast(error.message, 'error')
+    }
 
+
+  }
 }
 
 export const firebaseService = new FirebaseService()

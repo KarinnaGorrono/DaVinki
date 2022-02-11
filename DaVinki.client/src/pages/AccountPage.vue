@@ -113,6 +113,7 @@ import { piecesService } from '../services/PiecesService'
 import Piece from '../components/Piece.vue'
 import { useRoute } from 'vue-router'
 import { AuthService } from '../services/AuthService'
+import { firebaseService } from '../services/FirebaseService';
 
 export default {
   components: { Piece },
@@ -140,6 +141,7 @@ export default {
       myPieces: computed(() => AppState.myPieces)
 
     }
+
   }
 }
 </script>

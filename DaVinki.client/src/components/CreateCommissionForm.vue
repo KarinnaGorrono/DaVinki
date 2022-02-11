@@ -7,6 +7,7 @@
         class="form-control"
         id="inputBuyerName"
         required="true"
+        v-model="editable.name"
       />
     </div>
     <div class="col-12">
@@ -17,14 +18,20 @@
         id="inputBuyerEmail"
         placeholder="Email"
         required="true"
+        v-model="editable.email"
       />
     </div>
     <div class="col-md-4">
       <label for="inputPieceType" class="form-label">Type of Piece</label>
-      <select id="inputPieceType" class="form-select" required="true">
+      <select
+        id="inputPieceType"
+        class="form-select"
+        required="true"
+        v-model="editable.type"
+      >
         <option selected>Type...</option>
         <option>Drawings/Paintings</option>
-        <option>Three Dimensional</option>
+        <option value="threeDimensional">Three Dimensional</option>
         <option>Photography</option>
       </select>
     </div>
@@ -38,6 +45,7 @@
         class="form-control"
         id="inputEventDescription"
         required="true"
+        v-model="editable.description"
       ></textarea>
     </div>
 
@@ -51,22 +59,26 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity';
 import { useRoute } from 'vue-router';
 import { commissionsService } from '../services/CommissionsService';
 import { logger } from '../utils/Logger';
 export default {
   setup() {
     const route = useRoute()
+    const editable = ref({})
     return {
       async createCommission() {
         try {
-
-          await commissionsService.createCommission({ artistId: route.params.id })
+          editable.value.artistId = route.params.id,
+            await commissionsService.createCommission(editable.value)
+          editable.value = {}
         } catch (error) {
           logger.log(error)
         }
       },
-      route
+      route,
+      editable
     };
   }
 }

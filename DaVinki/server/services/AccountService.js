@@ -41,7 +41,9 @@ function sanitizeBody(body) {
     location: body.location,
     facebook: body.facebook,
     instagram: body.instagram,
-    acceptingCommissions: body.acceptingCommissions
+    acceptingCommissions: body.acceptingCommissions,
+    biography: body.biography,
+    quote: body.quote
   }
   return writable
 }

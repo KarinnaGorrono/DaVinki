@@ -48,15 +48,10 @@
           <div class="py-4">
             <p>
               {{ account.biography }}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              quidem, ratione illum in incidunt earum voluptates excepturi dicta
-              rem perferendis ducimus enim molestias, consectetur voluptas
-              soluta molestiae velit iure quis!
             </p>
           </div>
           <div class="py-3">
-            "I am extraordinarily patient, provided I get my own way in the
-            end." -Margaret Thatcher
+            {{ account.quote }}
           </div>
         </div>
       </div>

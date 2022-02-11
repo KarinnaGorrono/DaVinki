@@ -12,5 +12,6 @@ export const AppState = reactive({
   activeCommission: {},
   filteredPieces: [],
   searchResults: [],
-  resetPieces: []
+  resetPieces: [],
+  profile: {}
 })

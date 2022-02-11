@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white rounded elevation-1 border-white"
+    class="bg-white rounded elevation-5 border-white"
     :data-bs-target="'#piece-' + piece.id"
     data-bs-toggle="modal"
   >

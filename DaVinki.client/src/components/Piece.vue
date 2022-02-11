@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white rounded elevation-1 border-white"
+    class="bg-white rounded elevation-5 border-white"
     :data-bs-target="'#piece-' + piece.id"
     data-bs-toggle="modal"
   >
@@ -9,7 +9,7 @@
       <h4 class="piece-title">{{ piece.name }}</h4>
       <h6 class="piece-artist">{{ piece.artist.name }}</h6>
     </div>
-    <Modal :id="'piece-' + piece.id">
+    <Modal :id="'piece-' + piece.id" class="bg-black">
       <template #modal-title>
         <h4>{{ piece.name }}</h4>
       </template>
@@ -40,6 +40,7 @@
           data-bs-dismiss="modal"
           aria-label="delete"
           class="btn btn-danger"
+          v-if="piece.creatorId == account.id"
         >
           <b>Delete Piece</b>
         </button>
@@ -49,12 +50,13 @@
 </template>
 
 <script>
-import { ref, watchEffect } from "@vue/runtime-core"
+import { computed, ref, watchEffect } from "@vue/runtime-core"
 import Pop from "../utils/Pop"
 import { piecesService } from "../services/PiecesService"
 import { logger } from "../utils/Logger"
 import { useRoute, useRouter } from "vue-router"
 import { Modal } from "bootstrap"
+import { AppState } from "../AppState"
 
 export default {
   props: {
@@ -68,7 +70,7 @@ export default {
       editable.value = { ...props.piece }
     })
     return {
-
+      account: computed(() => AppState.account),
       editable,
 
       async removePiece() {

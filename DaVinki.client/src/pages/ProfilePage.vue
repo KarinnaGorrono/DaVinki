@@ -11,6 +11,7 @@
       <button data-bs-toggle="modal" data-bs-target="#createCommission">
         create commission
       </button>
+      <button>follow this artist</button>
     </div>
   </main>
   <Modal id="createCommission">

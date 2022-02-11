@@ -1,5 +1,5 @@
 <template>
-  <form class="row g-3">
+  <form @submit.prevent="createCommission()" class="row g-3">
     <div class="col-12">
       <label for="buyerName" class="form-label">Name</label>
       <input
@@ -23,7 +23,7 @@
       <label for="inputPieceType" class="form-label">Type of Piece</label>
       <select id="inputPieceType" class="form-select" required="true">
         <option selected>Type...</option>
-        <option>Painting/Drawing</option>
+        <option>Drawings/Paintings</option>
         <option>Three Dimensional</option>
         <option>Photography</option>
       </select>
@@ -51,9 +51,22 @@
 </template>
 
 <script>
+import { useRoute } from 'vue-router';
+import { commissionsService } from '../services/CommissionsService';
+import { logger } from '../utils/Logger';
 export default {
   setup() {
-    return {};
+    const route = useRoute()
+    return {
+      async createCommission() {
+        try {
+          await commissionsService.createCommission({ artistId: route.params.id })
+        } catch (error) {
+          logger.log(error)
+        }
+      },
+      route
+    };
   }
 }
 </script>

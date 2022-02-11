@@ -36,7 +36,7 @@
           aria-label="Search"
           v-model="editable.query"
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-dark mx-2" type="submit">Search</button>
       </form>
       <span class="navbar-text">
         <button

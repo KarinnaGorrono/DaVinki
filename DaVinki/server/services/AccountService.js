@@ -43,7 +43,8 @@ function sanitizeBody(body) {
     instagram: body.instagram,
     acceptingCommissions: body.acceptingCommissions,
     biography: body.biography,
-    quote: body.quote
+    quote: body.quote,
+    isArtist: body.isArtist
   }
   return writable
 }

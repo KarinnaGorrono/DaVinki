@@ -21,7 +21,7 @@
               <p>{{ piece.createdDate }}</p>
             </div>
           </div>
-          <div class="col-md-9 d-flex justify-content-center pt-3">
+          <div class="col-md-12 d-flex justify-content-center pt-3">
             <img
               class="rounded img-fluid details-img"
               :src="piece.coverImg"

@@ -76,7 +76,8 @@ export default {
           }
           Pop.toast('Piece has been deleted')
         } catch (error) {
-          Pop.toast(error.message, 'error')
+
+          Pop.toast('You are not authorized to delete this piece.')
           logger.log(error.message)
         }
       },

@@ -10,7 +10,7 @@ class FollowersService {
     }
 
     async createFollower() {
-        const res = await api.post('api/followers', body)
+        const res = await api.post('api/followers/' + id)
         logger.log(res.data)
         AppState.followers.unshift(res.body)
         return res.data

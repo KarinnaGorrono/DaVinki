@@ -62,7 +62,7 @@
       </div>
       <div class="d-flex justify-content-end py-5">
         <button
-          class="btn btn-outline-success"
+          class="btn btn-outline-dark"
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#addPiece"
@@ -80,7 +80,7 @@
         </Modal>
 
         <button
-          class="btn btn-outline-success"
+          class="btn btn-outline-dark"
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#editProfile"
